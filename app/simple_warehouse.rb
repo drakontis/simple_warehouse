@@ -1,3 +1,6 @@
+require_relative 'store.rb'
+require_relative 'crate.rb'
+
 class SimpleWarehouse
 
   def run
