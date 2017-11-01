@@ -26,15 +26,6 @@ class Warehouse
       else
         command.execute
       end
-
-      # case command
-      #   when 'help'
-      #     show_help_message
-      #   when 'exit'
-      #     exit
-      #   else
-      #     show_unrecognized_message
-      # end
     end
   end
 
