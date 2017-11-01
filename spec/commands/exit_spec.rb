@@ -13,7 +13,7 @@ describe Commands::Exit do
 
   describe '#execute' do
     it "should set false to warehouse's live attribute" do
-      subject.execute
+      expect{ subject.execute }.to output("Thank you for using simple_warehouse!\n").to_stdout
       expect(warehouse.live).to be_falsey
     end
   end
