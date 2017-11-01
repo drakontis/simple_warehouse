@@ -17,7 +17,7 @@ describe Commands::Store do
       let(:store) { nil }
 
       it 'should print an error' do
-        expect{subject.execute([10])}.to output("Please initialize the store\n").to_stdout
+        expect{subject.execute([10])}.to output("#{Commands::Command::NOT_INITIALIZED_ERROR_MESSAGE}\n").to_stdout
       end
     end
 

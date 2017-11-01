@@ -8,7 +8,7 @@ module Commands
 
     def execute(args = [])
       if @warehouse.store.nil?
-        puts 'Please initialize the store'
+        puts NOT_INITIALIZED_ERROR_MESSAGE
       elsif args.count != 5
         puts WRONG_ARGUMENT_ERROR_MESSAGE
       else

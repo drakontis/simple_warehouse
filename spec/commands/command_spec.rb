@@ -43,10 +43,20 @@ describe Commands::Command do
     end
 
     context 'store' do
-      it 'should return an Init command' do
+      it 'should return a Store command' do
         result = Commands::Command.find('store', warehouse)
 
         expect(result).to be_a Commands::Store
+        expect(result.warehouse).to be_a Warehouse
+        expect(result.warehouse.live).to be_truthy
+      end
+    end
+
+    context 'remove' do
+      it 'should return a Remove command' do
+        result = Commands::Command.find('remove', warehouse)
+
+        expect(result).to be_a Commands::Remove
         expect(result.warehouse).to be_a Warehouse
         expect(result.warehouse.live).to be_truthy
       end
