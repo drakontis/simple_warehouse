@@ -1,6 +1,7 @@
 require_relative 'store.rb'
 require_relative 'crate.rb'
 require_relative 'position.rb'
+require_relative 'slot.rb'
 
 class SimpleWarehouse
 
