@@ -2,8 +2,15 @@ require_relative 'store.rb'
 require_relative 'crate.rb'
 require_relative 'position.rb'
 require_relative 'slot.rb'
+require_relative 'commands/command.rb'
+require_relative 'commands/exit.rb'
 
 class Warehouse
+  attr_accessor :live
+
+  def initialize(live:)
+    @live = live
+  end
 
   def run
     @live = true
@@ -11,14 +18,22 @@ class Warehouse
     while @live
       print '> '
       command = gets.chomp
-      case command
-        when 'help'
-          show_help_message
-        when 'exit'
-          exit
-        else
-          show_unrecognized_message
+
+      command = Commands::Command.find(command, self)
+      if command.present?
+        command.execute
+      else
+        show_unrecognized_message
       end
+
+      # case command
+      #   when 'help'
+      #     show_help_message
+      #   when 'exit'
+      #     exit
+      #   else
+      #     show_unrecognized_message
+      # end
     end
   end
 
@@ -37,10 +52,4 @@ exit             Exits the application.'
   def show_unrecognized_message
     puts 'Command not found. Type `help` for instructions on usage'
   end
-
-  def exit
-    puts 'Thank you for using simple_warehouse!'
-    @live = false
-  end
-
 end
