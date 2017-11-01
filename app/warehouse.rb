@@ -3,7 +3,7 @@ require_relative 'crate.rb'
 require_relative 'position.rb'
 require_relative 'slot.rb'
 
-class SimpleWarehouse
+class Warehouse
 
   def run
     @live = true

@@ -1,3 +1,3 @@
-require './app/simple_warehouse'
+require './app/warehouse'
 
-SimpleWarehouse.new.run
+Warehouse.new.run
