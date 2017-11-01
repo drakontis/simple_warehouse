@@ -10,6 +10,8 @@ module Commands
       case command
         when 'exit'
           Exit.new(warehouse: warehouse)
+        when 'help'
+          Help.new(warehouse: warehouse)
       end
     end
 

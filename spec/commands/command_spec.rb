@@ -21,6 +21,16 @@ describe Commands::Command do
         expect(result.warehouse.live).to be_truthy
       end
     end
+
+    context 'help' do
+      it 'should return a Help command' do
+        result = Commands::Command.find('help', warehouse)
+
+        expect(result).to be_a Commands::Help
+        expect(result.warehouse).to be_a Warehouse
+        expect(result.warehouse.live).to be_truthy
+      end
+    end
   end
 
   describe '#execute' do
