@@ -41,11 +41,27 @@ describe Commands::Command do
         expect(result.warehouse.live).to be_truthy
       end
     end
+
+    context 'store' do
+      it 'should return an Init command' do
+        result = Commands::Command.find('store', warehouse)
+
+        expect(result).to be_a Commands::Store
+        expect(result.warehouse).to be_a Warehouse
+        expect(result.warehouse.live).to be_truthy
+      end
+    end
   end
 
   describe '#execute' do
     it 'should raise a NotImplementedError' do
       expect{subject.execute}.to raise_error NotImplementedError
+    end
+  end
+
+  describe 'WRONG_ARGUMENT_ERROR_MESSAGE' do
+    it 'should return the error message' do
+      expect(Commands::Command::WRONG_ARGUMENT_ERROR_MESSAGE).to eq 'Wrong number of arguments. Type `help` for instructions'
     end
   end
 end

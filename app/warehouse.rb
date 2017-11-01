@@ -6,12 +6,14 @@ require_relative 'commands/command.rb'
 require_relative 'commands/exit.rb'
 require_relative 'commands/help.rb'
 require_relative 'commands/init.rb'
+require_relative 'commands/store.rb'
 
 class Warehouse
   attr_accessor :live, :store
 
-  def initialize(live: true)
+  def initialize(live: true, store: store)
     @live = live
+    @store = store
   end
 
   def run

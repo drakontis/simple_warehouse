@@ -1,5 +1,7 @@
 module Commands
   class Command
+    WRONG_ARGUMENT_ERROR_MESSAGE = 'Wrong number of arguments. Type `help` for instructions'
+
     attr_accessor :warehouse
 
     def initialize(warehouse:)
@@ -14,6 +16,8 @@ module Commands
           Help.new(warehouse: warehouse)
         when 'init'
           Init.new(warehouse: warehouse)
+        when 'store'
+          Store.new(warehouse: warehouse)
       end
     end
 

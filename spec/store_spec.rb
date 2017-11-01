@@ -12,9 +12,8 @@ describe Store do
   end
 
   describe 'Add crate to store' do
-    let(:position) { Position.new(x: 5, y: 4) }
-    let(:slot) { Slot.new(width: 10, height: 3) }
-    let(:crate) { Crate.new(product_code: 'P', position: position, slot: slot) }
+    let(:slot) { Slot.new(starts_at: Position.new(x: 5, y: 3), ends_at: Position.new(x: 7, y: 5)) }
+    let(:crate) { Crate.new(product_code: 'P', slot: slot) }
 
     it 'should add crate to store' do
       store = Store.new(width: 50, height: 30)

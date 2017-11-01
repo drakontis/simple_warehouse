@@ -1,9 +1,8 @@
 class Crate
-  attr_reader :product_code, :position, :slot
+  attr_reader :product_code, :slot
 
-  def initialize(product_code:, position:, slot:)
+  def initialize(product_code:, slot:)
     @product_code = product_code
-    @position = position
     @slot = slot
   end
 end

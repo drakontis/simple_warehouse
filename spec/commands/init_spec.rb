@@ -31,7 +31,7 @@ describe Commands::Init do
       it 'should set an new store' do
         expect(warehouse.store).to be nil
 
-        expect{subject.execute([10])}.to output("Wrong number of arguments. Type `help` for instructions\n").to_stdout
+        expect{subject.execute([10])}.to output("#{Commands::Command::WRONG_ARGUMENT_ERROR_MESSAGE}\n").to_stdout
       end
     end
   end
