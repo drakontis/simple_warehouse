@@ -5,9 +5,10 @@ require_relative 'slot.rb'
 require_relative 'commands/command.rb'
 require_relative 'commands/exit.rb'
 require_relative 'commands/help.rb'
+require_relative 'commands/init.rb'
 
 class Warehouse
-  attr_accessor :live
+  attr_accessor :live, :store
 
   def initialize(live: true)
     @live = live
@@ -18,13 +19,13 @@ class Warehouse
     puts 'Type `help` for instructions on usage'
     while @live
       print '> '
-      command = gets.chomp
+      args = gets.chomp.split(' ')
 
-      command = Commands::Command.find(command, self)
+      command = Commands::Command.find(args.shift, self)
       if command.nil?
         show_unrecognized_message
       else
-        command.execute
+        command.execute(args)
       end
     end
   end

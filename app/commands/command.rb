@@ -12,10 +12,12 @@ module Commands
           Exit.new(warehouse: warehouse)
         when 'help'
           Help.new(warehouse: warehouse)
+        when 'init'
+          Init.new(warehouse: warehouse)
       end
     end
 
-    def execute
+    def execute(args = nil)
       raise NotImplementedError
     end
   end
