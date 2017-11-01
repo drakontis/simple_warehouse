@@ -1,9 +1,9 @@
 class Store
   attr_reader :width, :height, :crates
 
-  def initialize(wid, hei)
+  def initialize(wid:, hei:)
     @width = wid
-    @hei = hei
+    @height = hei
     @crates = []
   end
 end
