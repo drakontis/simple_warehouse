@@ -71,6 +71,16 @@ describe Commands::Command do
         expect(result.warehouse.live).to be_truthy
       end
     end
+
+    context 'locate' do
+      it 'should return a Locate command' do
+        result = Commands::Command.find('locate', warehouse)
+
+        expect(result).to be_a Commands::Locate
+        expect(result.warehouse).to be_a Warehouse
+        expect(result.warehouse.live).to be_truthy
+      end
+    end
   end
 
   describe '#execute' do

@@ -23,6 +23,8 @@ module Commands
           Remove.new(warehouse: warehouse)
         when 'view'
           View.new(warehouse: warehouse)
+        when 'locate'
+          Locate.new(warehouse: warehouse)
       end
     end
 
