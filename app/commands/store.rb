@@ -45,7 +45,7 @@ module Commands
       elsif is_excessive?
         puts 'Crate cannot fit in this position'
       else
-        warehouse.store.crates << Crate.new(product_code: product_code, slot: slot)
+        warehouse.store.crates << ::Store::Crate.new(product_code: product_code, slot: slot)
         puts 'Crate has been successfully stored'
       end
     end
@@ -65,7 +65,7 @@ module Commands
         end_width = x + width - 1
         end_height = y + height - 1
 
-        @slot ||= Slot.new(starts_at: Position.new(x: x, y: y), ends_at: Position.new(x: end_width, y: end_height))
+        @slot ||= ::Store::Slot.new(starts_at: ::Store::Position.new(x: x, y: y), ends_at: ::Store::Position.new(x: end_width, y: end_height))
       end
     end
   end

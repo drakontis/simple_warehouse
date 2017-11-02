@@ -20,7 +20,7 @@ describe Commands::Init do
 
         expect{subject.execute([width, height])}.to output("Warehouse has been (Re)initialized with a new store with width: #{width} and height: #{height}\n").to_stdout
 
-        expect(warehouse.store).to be_a Store
+        expect(warehouse.store).to be_a Store::Store
         expect(warehouse.store.width).to eq 10
         expect(warehouse.store.height).to eq 12
         expect(warehouse.store.crates).to be_empty

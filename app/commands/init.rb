@@ -7,7 +7,7 @@ module Commands
         width = args.first.to_i
         height = args.last.to_i
 
-        warehouse.store = ::Store.new(width: width, height: height)
+        warehouse.store = ::Store::Store.new(width: width, height: height)
 
         puts "Warehouse has been (Re)initialized with a new store with width: #{width} and height: #{height}"
       end

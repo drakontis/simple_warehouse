@@ -35,7 +35,7 @@ module Commands
           end
 
           matrix_row << element_prefix + '_'
-          position = Position.new(x: width_index, y: height_index)
+          position = ::Store::Position.new(x: width_index, y: height_index)
           crate = @warehouse.store.crates.find{ |crate| crate.slot.contains?(position) }
 
           unless crate.nil?

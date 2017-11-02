@@ -1,12 +1,12 @@
 require "spec_helper"
 
 describe Commands::View do
-  let(:warehouse) { Warehouse.new(live: true, store: Store.new(width: 12, height: 12)) }
+  let(:warehouse) { Warehouse.new(live: true, store: Store::Store.new(width: 12, height: 12)) }
   subject{ Commands::View.new(warehouse: warehouse) }
 
   before do
-    warehouse.store.crates << Crate.new(product_code: 'T', slot: Slot.new(starts_at: Position.new(x: 0, y: 0), ends_at: Position.new(x: 3, y: 3)))
-    warehouse.store.crates << Crate.new(product_code: 'W', slot: Slot.new(starts_at: Position.new(x: 4, y: 6), ends_at: Position.new(x: 5, y: 7)))
+    warehouse.store.crates << Store::Crate.new(product_code: 'T', slot: Store::Slot.new(starts_at: Store::Position.new(x: 0, y: 0), ends_at: Store::Position.new(x: 3, y: 3)))
+    warehouse.store.crates << Store::Crate.new(product_code: 'W', slot: Store::Slot.new(starts_at: Store::Position.new(x: 4, y: 6), ends_at: Store::Position.new(x: 5, y: 7)))
   end
 
   describe '#initialize' do

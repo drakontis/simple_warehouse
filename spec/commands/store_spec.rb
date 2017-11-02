@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe Commands::Store do
-  let(:store) { Store.new(width: 10, height: 10) }
+  let(:store) { Store::Store.new(width: 10, height: 10) }
   let(:warehouse) { Warehouse.new(live: true, store: store) }
   subject{ Commands::Store.new(warehouse: warehouse) }
 
@@ -59,8 +59,8 @@ describe Commands::Store do
 
     context 'with overlapping' do
       it 'should print an error' do
-        slot = Slot.new(starts_at: Position.new(x: 5, y: 3), ends_at: Position.new(x: 7, y: 5))
-        store.crates << Crate.new(product_code: 'T', slot: slot)
+        slot = Store::Slot.new(starts_at: Store::Position.new(x: 5, y: 3), ends_at: Store::Position.new(x: 7, y: 5))
+        store.crates << Store::Crate.new(product_code: 'T', slot: slot)
 
         expect{subject.execute([6, 4, 2, 2, 'T'])}.to output("The slot is not available\n").to_stdout
       end
@@ -92,8 +92,8 @@ describe Commands::Store do
 
   describe '#overlapping_slots?' do
     before do
-      store.crates << Crate.new(product_code: 'T', slot: Slot.new(starts_at: Position.new(x: 0, y: 0), ends_at: Position.new(x: 3, y: 3)))
-      store.crates << Crate.new(product_code: 'T', slot: Slot.new(starts_at: Position.new(x: 2, y: 4), ends_at: Position.new(x: 4, y: 5)))
+      store.crates << Store::Crate.new(product_code: 'T', slot: Store::Slot.new(starts_at: Store::Position.new(x: 0, y: 0), ends_at: Store::Position.new(x: 3, y: 3)))
+      store.crates << Store::Crate.new(product_code: 'T', slot: Store::Slot.new(starts_at: Store::Position.new(x: 2, y: 4), ends_at: Store::Position.new(x: 4, y: 5)))
     end
 
     context 'with overlapping slots' do
@@ -159,11 +159,11 @@ describe Commands::Store do
     it 'should return a slot' do
       slot = subject.send(:slot)
 
-      expect(slot).to be_a Slot
-      expect(slot.starts_at).to be_a Position
+      expect(slot).to be_a Store::Slot
+      expect(slot.starts_at).to be_a Store::Position
       expect(slot.starts_at.x).to eq 0
       expect(slot.starts_at.y).to eq 0
-      expect(slot.ends_at).to be_a Position
+      expect(slot.ends_at).to be_a Store::Position
       expect(slot.ends_at.x).to eq 4
       expect(slot.ends_at.y).to eq 2
     end

@@ -8,7 +8,7 @@ module Commands
       else
         width = args.first.to_i
         height = args.last.to_i
-        position = Position.new(x: width, y: height)
+        position = ::Store::Position.new(x: width, y: height)
 
         crate = warehouse.store.crates.find{|crate| crate.slot.contains?(position) }
 

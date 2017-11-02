@@ -1,11 +1,11 @@
 require "spec_helper"
 
 describe Commands::Remove do
-  let(:warehouse) { Warehouse.new(live: true, store: Store.new(width: 10, height: 10)) }
+  let(:warehouse) { Warehouse.new(live: true, store: Store::Store.new(width: 10, height: 10)) }
   subject{ Commands::Remove.new(warehouse: warehouse) }
 
   before do
-    warehouse.store.crates << Crate.new(product_code: 'T', slot: Slot.new(starts_at: Position.new(x: 0, y: 0), ends_at: Position.new(x: 3, y: 3)))
+    warehouse.store.crates << Store::Crate.new(product_code: 'T', slot: Store::Slot.new(starts_at: Store::Position.new(x: 0, y: 0), ends_at: Store::Position.new(x: 3, y: 3)))
   end
 
   describe '#execute' do
