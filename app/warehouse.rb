@@ -8,6 +8,7 @@ require_relative 'commands/help.rb'
 require_relative 'commands/init.rb'
 require_relative 'commands/store.rb'
 require_relative 'commands/remove.rb'
+require_relative 'commands/view.rb'
 
 class Warehouse
   attr_accessor :live, :store

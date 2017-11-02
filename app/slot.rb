@@ -8,10 +8,10 @@ class Slot
   end
 
   def overlapping?(slot)
-    contains(slot.starts_at) || contains(slot.ends_at)
+    contains?(slot.starts_at) || contains?(slot.ends_at)
   end
 
-  def contains(position)
+  def contains?(position)
     position.x >= starts_at.x && position.y >= starts_at.y && position.x <= ends_at.x && position.y <= ends_at.y
   end
 end

@@ -10,7 +10,7 @@ module Commands
         height = args.last.to_i
         position = Position.new(x: width, y: height)
 
-        crate = warehouse.store.crates.find{|crate| crate.slot.contains(position) }
+        crate = warehouse.store.crates.find{|crate| crate.slot.contains?(position) }
 
         if crate.nil?
           puts 'Cannot find crate. Please try again.'

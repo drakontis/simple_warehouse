@@ -61,6 +61,16 @@ describe Commands::Command do
         expect(result.warehouse.live).to be_truthy
       end
     end
+
+    context 'view' do
+      it 'should return a View command' do
+        result = Commands::Command.find('view', warehouse)
+
+        expect(result).to be_a Commands::View
+        expect(result.warehouse).to be_a Warehouse
+        expect(result.warehouse.live).to be_truthy
+      end
+    end
   end
 
   describe '#execute' do

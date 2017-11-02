@@ -1,7 +1,7 @@
 module Commands
   class Command
     WRONG_ARGUMENT_ERROR_MESSAGE = 'Wrong number of arguments. Type `help` for instructions'
-    NOT_INITIALIZED_ERROR_MESSAGE = 'Wrong number of arguments. Type `help` for instructions'
+    NOT_INITIALIZED_ERROR_MESSAGE = 'Please initialize the store'
 
     attr_accessor :warehouse
 
@@ -21,6 +21,8 @@ module Commands
           Store.new(warehouse: warehouse)
         when 'remove'
           Remove.new(warehouse: warehouse)
+        when 'view'
+          View.new(warehouse: warehouse)
       end
     end
 
